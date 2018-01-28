@@ -8,6 +8,7 @@
 	 <div class="row">
        <div class="col-md-12 ">
 		<form method="POST" action="{{ route('branches.store') }}">
+        
 			{{ csrf_field() }}
 		<div class="form-group col-md-6">
 		    <label for="address">Address</label>

@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Starter</title>
+  <title>Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
@@ -21,6 +21,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
   <link rel="stylesheet" href="{{ asset('dist/css/skins/skin-blue.min.css') }}">
+  
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}">
 
 <!-- my Custom Css  -->
   <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
@@ -52,19 +56,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <h1>
                 @yield('header')
             </h1>
-            <!-- You can dynamically generate breadcrumbs here -->
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                <li class="active">Here</li>
-            </ol>
         </section>
-        
         @include('partials.flashMessage')
         <!-- Main content -->
+
         <section class="content">
             <!-- Your Page Content Here -->
             @yield('content')
         </section><!-- /.content -->
+
     </div><!-- /.content-wrapper -->
 
     <!-- Footer -->
@@ -80,6 +80,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
+
+<!-- DataTables -->
+<script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 
 <!-- my Custom Js  -->
 <script src="{{ asset('js/customJs.js') }}"></script>

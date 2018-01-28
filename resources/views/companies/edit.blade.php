@@ -8,7 +8,7 @@
 	 <div class="row">
        <div class="col-md-12 ">
 
-		<form method="POST" action="{{ route('companies.update',$company->id) }}">
+		<form method="POST" action="{{ route('companies.update',$company->id) }}" enctype="multipart/form-data">
 			{{ csrf_field() }}
 			<div class="form-group col-md-6">
 			    <label for="name">Name</label>
@@ -33,14 +33,19 @@
 			<div class="form-group col-md-6">
 			    <label for="category_id">Select company category</label>
 			    <select name="category_id" id="category_id" class="form-control">
-			    	@foreach($categories as $cat)
-			    		<option value="{{ $cat->id }}" require> {{ $cat->name }}</option>
+			    	@foreach($categories as $category)
+			    		<option value="{{ $category->id }}" require> {{ $category->name }}</option>
 			    	@endforeach
 			    </select>
 			</div>
 			<div class="form-group col-md-6">
-			    <label for="company_image">Company Image</label>
-			    <input type="file" class="form-control" id="company_image" name="company_image" accept="image/*" required>
+				@if("images/companies/'.$company->company_image")
+		           	<img style="width: 50px;height: 50px" src="{{ asset('images/companies/'.$company->company_image) }}" alt="company image">
+		        @else
+	            	<td>No image found</td>
+	            @endif
+			    <label for="company_image">Company Image</label> 
+			    <input type="file" class="form-control" id="company_image" name="company_image"  accept="image/*" required>
 			</div>
 			<div class="form-group col-md-6">
 			    <label for="lat">Latitude</label>

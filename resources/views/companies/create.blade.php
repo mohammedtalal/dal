@@ -8,7 +8,7 @@
 	 <div class="row">
        <div class="col-md-12 ">
 
-		<form method="POST" action="{{ route('companies.store') }}">
+		<form method="POST" action="{{ route('companies.store') }}" enctype="multipart/form-data">
 			{{ csrf_field() }}
 			<div class="form-group col-md-6">
 			    <label for="name">Name</label>
@@ -23,52 +23,48 @@
 			<div class="form-group col-md-6">
 			    <label for="description">Description</label>
 			    <textarea type="text" class="form-control" id="description" name="description" rows="8" required></textarea>
-			</div>
-
-			
+			</div>		
 			
 			<div class="form-group col-md-6">
 			    <label for="category_id">Select category of company</label>
-			    <select name="category_id" id="category_id" class="form-control">
+			    <select name="category_id" id="category_id" class="form-control" required>
+			    	<option value="" selected >please select category</option>
 			    	@foreach($categories as $category)
-			    		<option value="{{ $category->id }}" require>{{ $category->name }}</option>
+			    		<option class="parent_category" value="{{ $category->id }}" require>{{ $category->name }}</option>
+			    		@if($category->children)
+							@foreach($category->children as $subCategory)
+			    				<option class="child_category" value="{{ $subCategory->id }}" require>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $subCategory->name }}</option>
+			    			@endforeach
+			    		@endif
+
 			    	@endforeach
 			    </select>
 			</div>
+			
 			<div class="form-group col-md-6">
 			    <label for="company_image">Company Image</label>
 			    <input type="file" class="form-control" id="company_image" name="company_image" accept="image/*" required>
 			</div>
+
 			<div class="form-group col-md-6">
 			    <label for="lat">Latitude</label>
 			    <input type="number" class="form-control" id="lat" name="lat" required>
-			</div>
-
-			
+			</div>				
 
 			<div class="form-group col-md-6">
 			    <label for="lang">Langtude</label>
 			    <input type="number" class="form-control" id="lang" name="lang" required>
 			</div>
 
-			<div class="form-group col-md-6 after-add-more">
-			    <label for="phone">Phone</label>
-			    <button type="button" class="btn pull-right btn-defualt btn-sm add-more" >
-			    	<i class="glyphicon glyphicon-plus"></i>
-			    </button> 
-			    <input type="text" class="form-control" id="phone" name="phone" required>
+			<div  id="dynamic-field">
+				<div class="form-group col-md-6" >
+				    <label for="phone">Phone</label>
+				    <button type="button" class="btn pull-right btn-defualt btn-sm" id="add-more" >
+				    	<i class="glyphicon glyphicon-plus"></i>
+				    </button> 
+				    <input type="number" class="form-control" id="phone" name="phone[]" required>
+				</div>
 			</div>
-			
-			
-			<!-- Copy Field -->
-			<div class="copy col-md-6 hide">
-			<div class="form-group col-md-6 alert ">
-			    <label for="phone">Phone</label>
-			    <button type="button" class="close" data-dismiss="alert">×</button> 
-			    <input type="text" class="form-control " id="phone" name="phone" required>	
-			</div>
-			</div>
-			
 
 		  <div class="form-groub col-md-12">
 		  	<button type="submit" class="btn btn-primary">Add Company</button>

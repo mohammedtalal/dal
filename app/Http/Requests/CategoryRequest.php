@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Category;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManagerStatic as Image ;
 use Symfony\Component\HttpFoundation\File\getClientOriginalName;
 
@@ -39,6 +40,11 @@ class CategoryRequest extends FormRequest
         $imageName = str_random(50).$image->getClientOriginalName();
         $image_resize = Image::make($image->getRealPath());
         $image_resize->resize(50, 50);
+        $categoryImagesDirectory = public_path('images/Categories');
+
+        if (! is_dir($categoryImagesDirectory) ) {
+            File::makeDirectory(public_path(). '/' .'images/Categories',0777);
+        } 
         $image_resize->save(public_path('images/Categories/').$imageName);
         return $imageName;
     }
@@ -56,18 +62,4 @@ class CategoryRequest extends FormRequest
         $category->save();
     }
 
-    public function persistUpdateCategory() {
-       $image = request()->file('category_image');
-        $imageName = str_random(50).$image->getClientOriginalName();
-        $image_resize = Image::make($image->getRealPath());
-        $image_resize->resize(50, 50);
-        $image_resize->save(public_path('images/Categories/').$imageName);
-
-        $category = new Category; 
-        $category->name = request('name');
-        $category->description = request('description');
-        $category->category_image = $imageName;
-        $category->save();
-
-    }
 }

@@ -8,8 +8,13 @@ use Illuminate\Http\Request;
 
 class BranchController extends Controller
 {
+    public function __construct()
+    {
+        // $this->middleware('auth');
+    }
+    
     public function index() {
-    	$branches  = Branch::all();
+    	$branches  = Branch::paginate(10);
     	return view('branches.index',compact('branches'));
     }
 
@@ -18,8 +23,8 @@ class BranchController extends Controller
     	return view ('branches.create',compact('companies'));
     }
 
-    public function store() {
-		Branch::create(request()->all());
+    public function store(Request $request) {
+		Branch::create($request->all());
     	return redirect()->route('branches.index')->with('success','Branch Created Successfully');
     }
 

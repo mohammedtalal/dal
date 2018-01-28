@@ -22,8 +22,8 @@ class CreateCompaniesTable extends Migration
             $table->string('phone');
             $table->string('description');
             $table->string('company_image');
-            $table->decimal('lat', 10, 7);
-            $table->decimal('lang', 10, 7);
+            $table->decimal('lat', 10, 8);
+            $table->decimal('lang', 11, 8);
             $table->timestamps();
         });
     }

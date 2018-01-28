@@ -1,6 +1,6 @@
 @extends('master')
 @section('header')
-	<h1 >Categories</h1>	
+	<h1 >Sub Categories</h1>	
 @endsection
 
 @section('content')
@@ -42,4 +42,5 @@
 
 	    </tbody>
 	</table>
+	{{ $subCategories->links() }}
 @endsection

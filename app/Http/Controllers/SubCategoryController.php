@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class SubCategoryController extends Controller
 {
     public function index() {
-    	$subCategories = Category::where('parent_id', '!=', 0)->get();
+    	$subCategories = Category::where('parent_id', '!=', 0)->paginate(10);
 
     	return view('subCategories.index',compact('subCategories'));
     }

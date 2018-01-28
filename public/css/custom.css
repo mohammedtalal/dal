@@ -1,3 +1,17 @@
 .plus_btn {
 	color: #3c8dbc
 }
+
+/* to make custom select option inside companies.create view */
+.parent_category{
+	font-weight: bold;
+}
+
+/*user image inside header */
+.user-menu .dropdown-toggle{
+	max-height: 51px;
+}
+.user-menu .dropdown-toggle .img-circle {
+	max-width: 30px;
+	max-height: 30px;
+}

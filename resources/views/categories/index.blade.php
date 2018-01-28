@@ -7,7 +7,7 @@
 	<a href="{{ route('categories.create') }}" class="btn btn-primary">Add New Category</a>
 
 	
-	<table class="table table-responsive" id="categories-table" >
+	<table class=" table table-responsive table-bordered" id="categories-table" >
 	    <thead>
 	        <th>#</th>
 	        <th>Name</th>
@@ -50,7 +50,12 @@
 	            </td>
 	        </tr>
 		@endforeach
-
+		
 	    </tbody>
 	</table>
+{{ $categories->links() }}
 @endsection
+
+
+
+

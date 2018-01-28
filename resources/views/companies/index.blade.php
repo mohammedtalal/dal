@@ -21,7 +21,6 @@
 	    </thead>
 	    <tbody>
 	   		@foreach($companies as $key => $company)
-
 		        <tr>
 		            <td>{{ ++$key }}</td>
 		            <td>{{ $company->name }}</td>
@@ -31,12 +30,11 @@
 		            <td>{{ $company->categories->name }}</td>
 		            <td>{{ $company->lat }}</td>
 		            <td>{{ $company->lang }}</td>
-		            <td><img style="width: 50px;height: 50px" src="{{ asset('images/categories/'.$company->categories->category_image) }}" alt="company image"></td>
+		            <td><img style="width: 50px;height: 50px" src="{{ asset('images/companies/'.$company->company_image) }}" alt="company image"></td>
 		            
 		            <td>
 	                	<div class='btn btn-group'>
-		                   
-
+		                  
 		                    <a href="{{ route('companies.edit',$company->id) }}" class='btn btn-info btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
 											
 		                    <form  method="post" action="{{ route('companies.destroy',$company->id) }}">
@@ -52,4 +50,5 @@
 			@endforeach
 	    </tbody>
 	</table>
+{{ $companies->links() }}
 @endsection
