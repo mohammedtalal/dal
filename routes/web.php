@@ -5,29 +5,33 @@
 		Auth::routes();
 
 		Route::get('/home', 'HomeController@index')->name('home');
-
+		
 
 
 		Route::group([ 'middleware'	=> 'auth'] , function() {
-			Route::get('admin', function() {
-			 // return view('master'); 
-			});
-			Route::get('admin/categories','CategoryController@index')->name('categories.index');
-			Route::get('admin/categories/create','CategoryController@create')->name('categories.create');
-			Route::post('admin/categories/store','CategoryController@store')->name('categories.store');
-			Route::get('admin/categories/edit/{id}','CategoryController@edit')->name('categories.edit');
-			Route::post('admin/categories/update/{id}','CategoryController@update')->name('categories.update');
-			Route::delete('admin/categories/delete/{id}','CategoryController@destroy')->name('categories.destroy');
+			// Route::get('admin', function() {
+			//  return view('master'); 
+			// });
+			// Route::get('admin/categories','CategoryController@index')->name('categories.index');
+			// Route::get('admin/categories/create','CategoryController@create')->name('categories.create');
+			// Route::post('admin/categories/store','CategoryController@store')->name('categories.store');
+			// Route::get('admin/categories/edit/{id}','CategoryController@edit')->name('categories.edit');
+			// Route::post('admin/categories/update/{id}','CategoryController@update')->name('categories.update');
+			// Route::delete('admin/categories/delete/{id}','CategoryController@destroy')->name('categories.destroy');
 		});
 
 		
+		Route::get('admin', function() {
+			// dd(config("app.timezone"));
+			 return view('master'); 
+		});
 	// Start Categories Controller Routes
-		// Route::get('admin/categories','CategoryController@index')->name('categories.index');
-		// Route::get('admin/categories/create','CategoryController@create')->name('categories.create');
-		// Route::post('admin/categories/store','CategoryController@store')->name('categories.store');
-		// Route::get('admin/categories/edit/{id}','CategoryController@edit')->name('categories.edit');
-		// Route::post('admin/categories/update/{id}','CategoryController@update')->name('categories.update');
-		// Route::delete('admin/categories/delete/{id}','CategoryController@destroy')->name('categories.destroy');
+		Route::get('admin/categories','CategoryController@index')->name('categories.index');
+		Route::get('admin/categories/create','CategoryController@create')->name('categories.create');
+		Route::post('admin/categories/store','CategoryController@store')->name('categories.store');
+		Route::get('admin/categories/edit/{id}','CategoryController@edit')->name('categories.edit');
+		Route::post('admin/categories/update/{id}','CategoryController@update')->name('categories.update');
+		Route::delete('admin/categories/delete/{id}','CategoryController@destroy')->name('categories.destroy');
 	// End Categories Controller Routes
 
 	// Start Sub-Categories Controller Routes
