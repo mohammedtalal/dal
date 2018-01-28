@@ -11,18 +11,16 @@ $(document).ready(function(){
     	$('#alert-block').fadeOut('fast');
 	}, 1300); // <-- time in milliseconds
 
-  
-  // to use data tables 
-  $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-  })
+
+  // real time filteration
+  var $rows = $('#categories-table tbody tr');
+  $('#search').keyup(function() {
+      var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+      
+      $rows.show().filter(function() {
+          var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+          return !~text.indexOf(val);
+      }).hide();
+  })  
 
 });

@@ -4,9 +4,9 @@
 @endsection
 @section('content')
     @if(empty($numberOfIntervals))
-      <a href="{{ route('intervals.create') }}" class="btn btn-primary">Add Interval</a>
+      <a href="{{ route('intervals.create') }}" class="btn btn-primary btn-flat">Add Interval</a>
     @elseif(!empty($numberOfIntervals))
-      <a href="{{ route('intervals.edit',$firstInterval->id) }}" class="btn btn-primary">Update Interval</a>
+      <a href="{{ route('intervals.edit',$firstInterval->id) }}" class="btn btn-primary btn-flat">Update Interval</a>
     @endif
 
 <table class="table table-striped table-inverse">

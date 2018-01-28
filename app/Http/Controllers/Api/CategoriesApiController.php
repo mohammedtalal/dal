@@ -19,7 +19,6 @@ class CategoriesApiController extends ApiBaseController
      */
     public function getAll() {
         $date = request('date');
-        // $dateFormated = str_replace(" ", ",", $date);
         
         $categories = Category::where('created_at', '>', date($date))
                                 ->orWhere('updated_at', '>', date($date))
@@ -30,7 +29,7 @@ class CategoriesApiController extends ApiBaseController
         $branches  = Branch::where('created_at', '>', date($date))
                                 ->orWhere('updated_at', '>', date($date))
                                 ->get();
-        $intervals = Interval::pluck('interval');
+        $interval = Interval::pluck('interval');
 
         $numberOfCategory = count($categories);     
         $numberOfCompanies = count($companies);     
@@ -39,7 +38,7 @@ class CategoriesApiController extends ApiBaseController
         if (empty($numberOfCategory) && empty($numberOfCompanies) && empty($numberOfBranches))
             return $this->sendError('Data not found.');
 
-        return $this->sendResponse(['categories'=>$categories ,'companies' => $companies, 'branches' => $branches, 'interval'  => $intervals], 'Data Retrived successfully');
+        return $this->sendResponse(['categories'=>$categories ,'companies' => $companies, 'branches' => $branches], 'Data Retrived successfully', $interval);
     }
 
 }

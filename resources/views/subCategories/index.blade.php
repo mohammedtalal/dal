@@ -4,7 +4,10 @@
 @endsection
 
 @section('content')
-	<a href="{{ route('categories.create') }}" class="btn btn-primary">Add New Sub-Category</a>
+	<div class="col-md-12">
+		<a href="{{ route('categories.create') }}" class="btn btn-primary btn-flat">Add New Sub-Category</a>
+		<!-- <input class="form-control" style="float:right; width: 35%" type="text" id="search" placeholder="Searching.."> -->
+	</div>
 	
 	<table class="table table-responsive" id="categories-table" >
 	    <thead>

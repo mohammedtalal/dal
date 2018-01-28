@@ -15,7 +15,7 @@
 				    <input type="number" class="form-control centre" id="interval" name="interval" value="{{ $intervals->interval }}" required>
 				</div>  
 				<div class="form-groub col-md-12">
-				  	<button type="submit" class="btn btn-primary">Update Interval</button>
+				  	<button type="submit" class="btn btn-primary btn-flat">Update Interval</button>
 				</div>
 			</form>
 		</div>	

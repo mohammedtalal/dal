@@ -1,7 +1,5 @@
 <?php
 
-
-
 		Auth::routes();
 
 		Route::get('/home', 'HomeController@index')->name('home');
@@ -25,6 +23,7 @@
 			// dd(config("app.timezone"));
 			 return view('master'); 
 		});
+
 	// Start Categories Controller Routes
 		Route::get('admin/categories','CategoryController@index')->name('categories.index');
 		Route::get('admin/categories/create','CategoryController@create')->name('categories.create');
