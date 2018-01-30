@@ -12,10 +12,6 @@ use Illuminate\Support\Facades\File;
 
 class CompanyController extends Controller
 {
-    public function __construct()
-    {
-        // $this->middleware('auth');
-    }
     
     public function index() {
     	$companies = Company::paginate(10);

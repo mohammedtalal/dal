@@ -27,24 +27,21 @@
               <!-- The user image in the navbar-->
               <img src="{{ asset('images/avatar.png') }}"   class="img-circle " alt="User Image">
               
-              <span>Admin</span>
-              <!-- <span class="hidden-xs">@if(Auth::check()){{ Auth::user()->name }} @endif</span> -->
+              <!-- <span>Admin</span> -->
+              <span class="hidden-xs">@if(Auth::check()){{ Auth::user()->name }} @endif</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <p>Admin </p>
+                <!-- <p>Admin </p> -->
               <img src="{{ asset('images/avatar.png') }}"   class="img-circle " alt="User Image">
-                <!-- <p>@if(Auth::check()){{ Auth::user()->name }} @endif</p> -->
+                <p>@if(Auth::check()){{ Auth::user()->name }} @endif</p>
               </li>
                 
               <!-- Menu Footer-->
               <li class="user-footer">
-                <!-- <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div> -->
                 <div class="pull-right">
-                  <a href="{{ Auth::logout() }}" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="{{ route('logout') }}" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>

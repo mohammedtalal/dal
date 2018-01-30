@@ -1,45 +1,57 @@
 <?php
 
-		Auth::routes();
 
 		Route::get('/home', 'HomeController@index')->name('home');
 		
+		Auth::routes();
+		Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 
 
-		Route::group([ 'middleware'	=> 'auth'] , function() {
-			// Route::get('admin', function() {
-			//  return view('master'); 
-			// });
-			// Route::get('admin/categories','CategoryController@index')->name('categories.index');
-			// Route::get('admin/categories/create','CategoryController@create')->name('categories.create');
-			// Route::post('admin/categories/store','CategoryController@store')->name('categories.store');
-			// Route::get('admin/categories/edit/{id}','CategoryController@edit')->name('categories.edit');
-			// Route::post('admin/categories/update/{id}','CategoryController@update')->name('categories.update');
-			// Route::delete('admin/categories/delete/{id}','CategoryController@destroy')->name('categories.destroy');
-		});
 
-		
 		Route::get('admin', function() {
-			// dd(config("app.timezone"));
 			 return view('master'); 
-		});
+			});
 
-	// Start Categories Controller Routes
-		Route::get('admin/categories','CategoryController@index')->name('categories.index');
-		Route::get('admin/categories/create','CategoryController@create')->name('categories.create');
-		Route::post('admin/categories/store','CategoryController@store')->name('categories.store');
-		Route::get('admin/categories/edit/{id}','CategoryController@edit')->name('categories.edit');
-		Route::post('admin/categories/update/{id}','CategoryController@update')->name('categories.update');
-		Route::delete('admin/categories/delete/{id}','CategoryController@destroy')->name('categories.destroy');
-	// End Categories Controller Routes
+		Route::group([ 'middleware'	=> ['web','auth']] , function() {
+			
+			Route::get('admin', function() {
+			 return view('master'); 
+			});
+			
+			
+			Route::get('admin/categories','CategoryController@index')->name('categories.index');
+			Route::get('admin/categories/create','CategoryController@create')->name('categories.create');
+			Route::post('admin/categories/store','CategoryController@store')->name('categories.store');
+			Route::get('admin/categories/edit/{id}','CategoryController@edit')->name('categories.edit');
+			Route::post('admin/categories/update/{id}','CategoryController@update')->name('categories.update');
+			Route::delete('admin/categories/delete/{id}','CategoryController@destroy')->name('categories.destroy');
 
-	// Start Sub-Categories Controller Routes
+				// Start Sub-Categories Controller Routes
 		Route::get('admin/subCategories','SubCategoryController@index')->name('subCategories.index');
 		Route::get('admin/subCategories/create','SubCategoryController@create')->name('subCategories.create');
 		Route::post('admin/subCategories/store','SubCategoryController@store')->name('subCategories.store');
 		Route::get('admin/subCategories/edit/{id}','SubCategoryController@edit')->name('subCategories.edit');
 		Route::post('admin/subCategories/update/{id}','SubCategoryController@update')->name('subCategories.update');
 		Route::delete('admin/subCategories/delete/{id}','SubCategoryController@destroy')->name('subCategories.destroy');
+	// End Sub-Categories Controller Routes
+		});
+
+	// Start Categories Controller Routes
+		// Route::get('admin/categories','CategoryController@index')->name('categories.index');
+		// Route::get('admin/categories/create','CategoryController@create')->name('categories.create');
+		// Route::post('admin/categories/store','CategoryController@store')->name('categories.store');
+		// Route::get('admin/categories/edit/{id}','CategoryController@edit')->name('categories.edit');
+		// Route::post('admin/categories/update/{id}','CategoryController@update')->name('categories.update');
+		// Route::delete('admin/categories/delete/{id}','CategoryController@destroy')->name('categories.destroy');
+	// End Categories Controller Routes
+
+	// Start Sub-Categories Controller Routes
+		// Route::get('admin/subCategories','SubCategoryController@index')->name('subCategories.index');
+		// Route::get('admin/subCategories/create','SubCategoryController@create')->name('subCategories.create');
+		// Route::post('admin/subCategories/store','SubCategoryController@store')->name('subCategories.store');
+		// Route::get('admin/subCategories/edit/{id}','SubCategoryController@edit')->name('subCategories.edit');
+		// Route::post('admin/subCategories/update/{id}','SubCategoryController@update')->name('subCategories.update');
+		// Route::delete('admin/subCategories/delete/{id}','SubCategoryController@destroy')->name('subCategories.destroy');
 	// End Sub-Categories Controller Routes
 
 	// Start Companies Controller Routes
@@ -68,4 +80,3 @@
 		Route::post('admin/intervals/update/{id}','IntervalController@update')->name('intervals.update');
 		Route::delete('admin/intervals/delete/{id}','IntervalController@destroy')->name('intervals.destroy');
 	// End Interval Controller Routes
-

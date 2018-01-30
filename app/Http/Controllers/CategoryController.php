@@ -8,7 +8,7 @@ use App\Http\Requests\uploadImage;
 use App\Interfaces\CategoryRepositoryInterface as CategoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-
+use Illuminate\Support\Facades\Session;
 use Intervention\Image\ImageManagerStatic as Image ;
 
 
@@ -16,7 +16,6 @@ class CategoryController extends Controller
 {
     public $category;
     public function __construct(CategoryInterface $category) {
-        // $this->middleware('auth');
         $this->category = $category;
     }
 
