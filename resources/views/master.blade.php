@@ -17,20 +17,9 @@
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
   <link rel="stylesheet" href="{{ asset('dist/css/skins/skin-blue.min.css') }}">
-  
-  <!-- DataTables -->
-  <link rel="stylesheet" href="{{ asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}">
 
 <!-- my Custom Css  -->
   <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
 
   <!-- Google Font -->
   <link rel="stylesheet"
@@ -57,8 +46,78 @@
         <!-- Main content -->
 
         <section class="content">
-            <!-- Your Page Content Here -->
+
+            @if(Request::path() == 'admin')
+               <!-- Your Page Content Here -->
+               <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                  <a href="{{ route('categories.index') }}">
+                    <div class="info-box">
+                    <span class="info-box-icon bg-aqua"><i class="ion-ios-keypad-outline"></i></span>
+
+                    <div class="info-box-content">
+                      <span class="info-box-text">Categories</span>
+                      <span class="info-box-number">{{ $allCategories }}</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                  </div>
+                  <!-- /.info-box -->
+                  </a>
+                </div>
+                <!-- /.col -->
+                
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                  <a href="{{ route('subCategories.index') }}">
+                    <div class="info-box">
+                    <span class="info-box-icon bg-aqua"><i class="ion-ios-grid-view-outline"></i></span>
+
+                    <div class="info-box-content">
+                      <span class="info-box-text">Sub-Categories</span>
+                      <span class="info-box-number">{{ $allSubCategories }}</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                  </div>
+                  </a>
+                  <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                 <a href="{{ route('companies.index') }}">
+                    <div class="info-box">
+                    <span class="info-box-icon bg-aqua"><i class="fa fa-building"></i></span>
+
+                    <div class="info-box-content">
+                      <span class="info-box-text">Companies</span>
+                      <span class="info-box-number">{{ $allCompanies }}</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                  </div>
+                  <!-- /.info-box -->
+                 </a>
+                </div>
+                <!-- /.col -->
+                
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                  <a href="{{ route('branches.index') }}">
+                    <div class="info-box">
+                    <span class="info-box-icon bg-aqua"><i class="fa fa-industry"></i></span>
+
+                    <div class="info-box-content">
+                      <span class="info-box-text">Branches</span>
+                      <span class="info-box-number">{{ $allBranches }}</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                  </div>
+                  <!-- /.info-box -->
+                  </a>
+                </div>
+                <!-- /.col -->
+              </div>
+            @endif
             @yield('content')
+
+           
         </section><!-- /.content -->
 
     </div><!-- /.content-wrapper -->
@@ -76,10 +135,6 @@
 <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
-
-<!-- DataTables -->
-<script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 
 <!-- my Custom Js  -->
 <script src="{{ asset('js/customJs.js') }}"></script>

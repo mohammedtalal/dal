@@ -30,9 +30,9 @@
           </a>
           <ul class="treeview-menu">
 
-            <li><a href="{{ route('categories.index') }}">All Categories</a></li>
+            <li><a href="{{ route('categories.index') }}"><i class="fa fa-hashtag"></i>All Categories</a></li>
            
-            <li><a href="{{ route('subCategories.index') }}">Sub-Category</a></li>
+            <li><a href="{{ route('subCategories.index') }}"><i class="fa fa-hashtag"></i>Sub-Category</a></li>
           </ul>
         </li>
         <!-- Sub Companies Element -->
@@ -43,7 +43,7 @@
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('companies.index') }}">All Companies</a></li>
+            <li><a href="{{ route('companies.index') }}"><i class="fa fa-building"></i>All Companies</a></li>
           </ul>
         </li>
 
@@ -54,7 +54,7 @@
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('branches.index') }}">All branches</a></li>
+            <li><a href="{{ route('branches.index') }}"><i class="fa fa-industry"></i>All branches</a></li>
           </ul>
         </li>
 
@@ -65,8 +65,11 @@
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('intervals.index') }}">Interval</a></li>
+            <li><a href="{{ route('intervals.index') }}"><i class="fa fa-cogs"></i>Interval</a></li>
           </ul>
+        </li>
+        <li class="">
+          <a href="{{ route('logout') }}"><i class="fa fa-sign-out"></i> <span>Sign-out</span></a>
         </li>
 
       </ul>

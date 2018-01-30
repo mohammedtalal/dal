@@ -2,20 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Branch;
+use App\Category;
+use App\Company;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Show the application dashboard.
      *
@@ -23,6 +16,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $allCategories = Category::all()->count();
+        $allSubCategories = Category::where('parent_id', '!=', 0)->get()->count();
+        $allCompanies  = Company::all()->count();
+        $allBranches   = Branch::all()->count();
+        return view('master',compact('allCategories','allSubCategories','allCompanies','allBranches'));
     }
 }
