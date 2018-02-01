@@ -17,7 +17,7 @@
 		  
 		<div class="form-group col-md-6">
 		    <label for="phone">Phone</label>
-		    <input 	type="tel" class="form-control" name="phone" id="phone" rows="8" required>
+		    <input 	type="tel" class="form-control" name="phone" id="phone" pattern="[0-9]{11}" minlength="10" maxlength="11" required>
 		</div>
 
         <div class="form-group col-md-6">
@@ -32,6 +32,7 @@
 		<div class="form-group col-md-12">
 		    <label for="company_id">Select company of branch</label>
 		    <select name="company_id" id="company_id" class="form-control">
+		    	<option value="" selected >please select company</option>
 		    	@foreach($companies as $company)
 	    			<option value="{{ $company->id }}" require>{{ $company->name }}</option>
 	    		@endforeach

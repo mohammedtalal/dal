@@ -11,12 +11,13 @@ class ApiBaseController extends Controller
 {
 
 
-    public function sendResponse($result=[], $message=[], $interval)
+    public function sendResponse($result=[], $deleted=[], $message=[], $interval)
     {
     	$response = [
             'status' => true,
             'message' => $message,
             'createdOrUpdated'    => $result,
+            'deleted'      => $deleted,
             'interval'=> $interval,
         ];
 

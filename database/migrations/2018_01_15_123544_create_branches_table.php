@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Schema\softDeletes;
+use Illuminate\Support\Facades\Schema;
 
 class CreateBranchesTable extends Migration
 {
@@ -17,9 +18,10 @@ class CreateBranchesTable extends Migration
             $table->increments('id');
             $table->integer('company_id');
             $table->string('address');
-            $table->integer('phone');
+            $table->string('phone');
             $table->decimal('lat', 10, 7);
             $table->decimal('lang', 10, 7);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

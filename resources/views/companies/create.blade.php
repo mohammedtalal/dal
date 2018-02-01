@@ -27,17 +27,18 @@
 			
 			<div class="form-group col-md-6">
 			    <label for="category_id">Select category of company</label>
+
 			    <select name="category_id" id="category_id" class="form-control" required>
 			    	<option value="" selected >please select category</option>
 			    	@foreach($categories as $category)
-			    		<option class="parent_category" value="{{ $category->id }}" require>{{ $category->name }}</option>
-			    		@if($category->children)
-							@foreach($category->children as $subCategory)
-			    				<option class="child_category" value="{{ $subCategory->id }}" require>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $subCategory->name }}</option>
-			    			@endforeach
-			    		@endif
-
-			    	@endforeach
+				    	<optgroup label="{{ $category->name }}">
+							@if($category->children)
+								@foreach($category->children as $subCategory)
+				    				<option class="child_category" value="{{ $subCategory->id }}" require>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $subCategory->name }}</option>
+				    			@endforeach
+				    		@endif
+						</optgroup>
+					@endforeach
 			    </select>
 			</div>
 			
@@ -62,7 +63,7 @@
 				    <button type="button" class="btn pull-right btn-defualt btn-sm" id="add-more" >
 				    	<i class="glyphicon glyphicon-plus"></i>
 				    </button> 
-				    <input type="tel" class="form-control" id="phone" name="phone[]" pattern="[0-9]{11}" required>
+				    <input type="tel" class="form-control" id="phone" name="phone[]" pattern="[0-9]{11}" minlength="10" maxlength="11" required>
 				</div>
 			</div>
 

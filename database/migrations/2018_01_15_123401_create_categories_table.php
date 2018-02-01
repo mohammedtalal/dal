@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Schema\softDeletes;
+use Illuminate\Support\Facades\Schema;
 
 class CreateCategoriesTable extends Migration
 {
@@ -19,6 +20,7 @@ class CreateCategoriesTable extends Migration
             $table->string('description');
             $table->integer('parent_id')->default(0);
             $table->string('category_image');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

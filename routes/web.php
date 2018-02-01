@@ -8,7 +8,7 @@
 
 		Route::group([ 'middleware'	=> ['web','auth']] , function() {
 			
-			Route::get('admin','HomeController@index')->name('admin');
+		Route::get('admin','HomeController@index')->name('admin');
 
 		// Start Categories Controller Routes
 			Route::get('admin/categories','CategoryController@index')->name('categories.index');

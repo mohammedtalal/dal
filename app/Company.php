@@ -5,10 +5,14 @@ namespace App;
 use App\Branch;
 use App\Category;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Company extends Model
 {
 	protected $table = "companies";
+    protected $dates = ['deleted_at'];
+    use SoftDeletes;
+    
     protected $fillable = [
     	'name',
         'address',

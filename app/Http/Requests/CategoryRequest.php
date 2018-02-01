@@ -43,9 +43,9 @@ class CategoryRequest extends FormRequest
         $categoryImagesDirectory = public_path('images/Categories');
 
         if (! is_dir($categoryImagesDirectory) ) {
-            File::makeDirectory(public_path(). '/' .'images/Categories',0777);
+            File::makeDirectory(public_path(). '/' .'images/categories',0777);
         } 
-        $image_resize->save(public_path('images/Categories/').$imageName);
+        $image_resize->save(public_path('images/categories/').$imageName);
         return $imageName;
     }
 

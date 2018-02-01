@@ -5,13 +5,17 @@ namespace App;
 use App\Company;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Intervention\Image\ImageManagerStatic as Image ;
 
 
 class Category extends Model
 {
+    
+    use SoftDeletes;
 
     protected $table = "categories";
+    protected $dates = ['deleted_at'];
 
     protected $fillable = [
         'name',

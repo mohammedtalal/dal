@@ -44,7 +44,7 @@ class CategoryController extends Controller
 
     public function update(CategoryRequest $catRequest, $id) {
     	$catRequest = $this->category->findCat($id);
-        $oldImagePath = public_path('images/categories/'. $catRequest->category_image);
+        $oldImagePath = public_path('/images/categories/'. $catRequest->category_image);
         if(! is_null($oldImagePath)) {
             File::delete($oldImagePath);
         }
@@ -55,7 +55,7 @@ class CategoryController extends Controller
         $imageName = str_random(50).$image->getClientOriginalName();
         $image_resize = Image::make($image->getRealPath());
         $image_resize->resize(50, 50);
-        $image_resize->save(public_path('images/Categories/').$imageName);
+        $image_resize->save(public_path('/images/categories/').$imageName);
         
         $catRequest->name = request('name');
         $catRequest->description = request('description');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Branch;
 use App\Company;
+use App\Http\Requests\BranchRequest;
 use Illuminate\Http\Request;
 
 class BranchController extends Controller
@@ -23,7 +24,7 @@ class BranchController extends Controller
     	return view ('branches.create',compact('companies'));
     }
 
-    public function store(Request $request) {
+    public function store(BranchRequest $request) {
 		Branch::create($request->all());
     	return redirect()->route('branches.index')->with('success','Branch Created Successfully');
     }
@@ -31,12 +32,12 @@ class BranchController extends Controller
     public function edit($id) {
     	$branch = Branch::find($id);
         $companies = Company::all();
-    	return view('branches.edit',compact('branch','companies'));
+    	return view('branches.edit' ,compact('branch','companies'));
     }
 
-    public function update($id) {
+    public function update(BranchRequest $request, $id) {
     	$branch = Branch::find($id);
-    	$branch->update(request()->all());
+    	$branch->update($request->all());
     	return redirect()->route('branches.index')->with('success','Category Updated successfully');
     }
 
