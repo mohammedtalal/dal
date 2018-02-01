@@ -14,7 +14,7 @@ class BranchController extends Controller
     }
     
     public function index() {
-    	$branches  = Branch::paginate(10);
+    	$branches  = Branch::orderby('id','asc')->paginate(10);
     	return view('branches.index',compact('branches'));
     }
 

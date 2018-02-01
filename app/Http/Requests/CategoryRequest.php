@@ -37,7 +37,7 @@ class CategoryRequest extends FormRequest
 
     public function uploadImage() {
         $image = request()->file('category_image');
-        $imageName = str_random(50).$image->getClientOriginalName();
+        $imageName = str_random(20).$image->getClientOriginalName();
         $image_resize = Image::make($image->getRealPath());
         $image_resize->resize(50, 50);
         $categoryImagesDirectory = public_path('images/Categories');

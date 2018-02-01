@@ -21,7 +21,7 @@ class CategoryController extends Controller
 
 
     public function index() {
-    	$categories = Category::where('parent_id', '=', 0)->with('children')->paginate(10);
+    	$categories = Category::where('parent_id', '=', 0)->with('children')->orderBy('id','asc')->paginate(10);
     	return view('categories.index',compact('categories'));
     }
 
@@ -67,6 +67,10 @@ class CategoryController extends Controller
 
     public function destroy($id) {
        	$category = $this->category->findCat($id);
+        $oldImagePath = public_path('images/categories/'. $category->category_image);
+        if(! is_null($oldImagePath)) {
+            File::delete($oldImagePath);
+        }
     	$category->delete();
     	return redirect()->route('categories.index')->with('danger','Deleted Category successfully');
     }
