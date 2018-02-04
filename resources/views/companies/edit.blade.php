@@ -52,8 +52,8 @@
 			    <input type="number" class="form-control" id="lat" name="lat" value="{{ $company->lat }}" required>
 			</div>
 			<div class="form-group col-md-6">
-			    <label for="lang">Langtude</label>
-			    <input type="number" class="form-control" id="lang" name="lang" value="{{ $company->lang }}" required>
+			    <label for="long">Langtude</label>
+			    <input type="number" class="form-control" id="long" name="long" value="{{ $company->long }}" required>
 			</div>
 
 		  <div class="form-groub col-md-6">

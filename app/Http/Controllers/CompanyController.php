@@ -57,14 +57,16 @@ class CompanyController extends Controller
         $companyRequest->description = request('description');
         $companyRequest->company_image  = $imageName;
         $companyRequest->lat   = request('lat');
-        $companyRequest->lang   = request('lang');
+        $companyRequest->long   = request('long');
         $companyRequest->save();
 
     	return redirect()->route('companies.index')->with('success','Company Updated successfully');
     }
 
     public function destroy($id) {
-       	$company = Company::find($id);
+       	$company = Company::with('branches')->find($id);
+        // delete related branches
+        $company->branches()->delete();
 
         $oldImagePath = public_path('images/companies/'. $company->company_image);
         if(! is_null($oldImagePath)) {

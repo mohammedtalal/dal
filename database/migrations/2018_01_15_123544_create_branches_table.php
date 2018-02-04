@@ -20,7 +20,7 @@ class CreateBranchesTable extends Migration
             $table->string('address');
             $table->string('phone');
             $table->decimal('lat', 10, 7);
-            $table->decimal('lang', 10, 7);
+            $table->decimal('long', 10, 7);
             $table->softDeletes();
             $table->timestamps();
         });

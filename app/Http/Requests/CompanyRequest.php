@@ -37,7 +37,7 @@ class CompanyRequest extends FormRequest
             'category_id' => 'required',
             'featured_image_id' => 'required',  
             'lat' => 'required|Numeric',
-            'lang' => 'required|Numeric'
+            'long' => 'required|Numeric'
         ];
     }
 
@@ -64,7 +64,7 @@ class CompanyRequest extends FormRequest
         $company->description = request('description');
         $company->company_image =$this->uploadImage();
         $company->lat   = request('lat');
-        $company->lang   = request('lang');
+        $company->long   = request('long');
         $company->save();
     }
 

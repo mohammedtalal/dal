@@ -21,7 +21,7 @@ class Company extends Model
         'company_image',
         'category_id',
         'lat',
-        'lang'
+        'long'
     ];
 
     /*

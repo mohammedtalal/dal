@@ -53,8 +53,8 @@
 			</div>				
 
 			<div class="form-group col-md-6">
-			    <label for="lang">Langtude</label>
-			    <input type="number" class="form-control" id="lang" name="lang" required>
+			    <label for="long">Langtude</label>
+			    <input type="number" class="form-control" id="long" name="long" required>
 			</div>
 
 			<div  id="dynamic-field">

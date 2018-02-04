@@ -21,10 +21,10 @@ class CreateCompaniesTable extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('phone');
-            $table->string('description');
+            $table->longText('description');
             $table->string('company_image');
             $table->decimal('lat', 10, 8);
-            $table->decimal('lang', 11, 8);
+            $table->decimal('long', 11, 8);
             $table->softDeletes();
             $table->timestamps();
         });

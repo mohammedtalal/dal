@@ -16,7 +16,7 @@
 	        <th>Description</th>
 	        <th>Image</th>
 	        <th>Parent</th>
-	        <th colspan="3">Action</th>
+	        <th class="wrapping">Action</th>
 	    </thead>
 	    <tbody>
 	   @foreach($subCategories as $key => $cat)
@@ -27,15 +27,14 @@
 	            <td ><img style="width: 50px;height: 50px" src="{{ asset('images/categories/'.$cat->category_image) }}" alt=""></td>
 				<td>{{ $cat->parent_category->name }}</td>
 	            <td>
-	                <div class='btn btn-group'>
-	                    <!-- <a href="" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a> -->
-	                    <a href="{{ route('categories.edit',$cat->id) }}" class='btn btn-info btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+	                <div class='btn btn-group wrapping-buttons'>
+	                   
+	                    <a href="{{ route('categories.edit',$cat->id) }}" class='btn  btn-info btn-xs'>edit</a>
 
 	                    <form  method="post" action="{{ route('categories.destroy',$cat->id) }}">
 							{{ csrf_field() }}
-	                    	<button type="submit" class='btn btn-danger btn-xs'>
-	                    		<i class="glyphicon glyphicon-trash"></i>
-	                    	</button >
+	                    	<button class='btn btn-danger btn-xs' type="submit">Delete</button>
+	                    	
 	                    	<input type="hidden" name="_method" value="DELETE">
 	                	</form>
 	                </div>

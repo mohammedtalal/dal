@@ -28,7 +28,7 @@ class BranchRequest extends FormRequest
             'address'     => 'required',
             'phone'  => 'required|regex:/(01)[0-9]{9}/',
             'lat'      => 'required',
-            'lang'     => 'required',
+            'long'     => 'required',
         ];
     }
 }

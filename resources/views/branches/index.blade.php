@@ -16,7 +16,7 @@
 	        <th>Company Name</th>
 	        <th>Latitude</th>
 	        <th>Longtude</th>
-	        <th colspan="3">Action</th>
+	        <th class="wrapping">Action</th>
 	    </thead>
 	    <tbody>
 	    
@@ -27,19 +27,17 @@
 	            <td>{{ $branch->phone }}</td>
 	            <td>{{ $branch->companies->name }}</td>
 	            <td>{{ $branch->lat }}</td>
-	            <td>{{ $branch->lang }}</td>
+	            <td>{{ $branch->long }}</td>
 
 	            <td>
 	                
-	               <div class='btn btn-group'>
-	                    <!-- <a href="" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a> -->
-	                    <a href="{{ route('branches.edit',$branch->id) }}" class='btn btn-info btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+	               <div class='btn btn-group wrapping-buttons'>
+	                    
+	                    <a href="{{ route('branches.edit',$branch->id) }}" class='btn  btn-info btn-xs'>edit</a>
 
 	                    <form  method="post" action="{{ route('branches.destroy',$branch->id) }}">
 							{{ csrf_field() }}
-	                    	<button type="submit" class='btn btn-danger btn-xs'>
-	                    		<i class="glyphicon glyphicon-trash"></i>
-	                    	</button >
+	                    	<button class='btn btn-danger btn-xs' type="submit">Delete</button>
 	                    	<input type="hidden" name="_method" value="DELETE">
 	                	</form>
 	                </div>

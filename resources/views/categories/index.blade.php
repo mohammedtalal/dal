@@ -16,7 +16,7 @@
 	        <th>Description</th>
 	        <th>Image</th>
 	        <!-- <th>Parent</th> -->
-	        <th colspan="3">Action</th>
+	        <th class="wrapping">Action</th>
 	    </thead>
 	    <tbody>
 	   @foreach($categories as $key => $category)
@@ -24,28 +24,34 @@
 	            <td>{{ ++$key }}</td>
 	            <td>
 	            	{{ $category->name }} <br>
-
-	            	@foreach($category->children as $child)
+					
+	            	@foreach($category->children->slice(0,3) as $child)
+	            	<ul>
 	            		<a href="{{ route('categories.edit',$child->id) }}">
-	            			<medium> <b> {{ $child->name }} |</b> </small>
-	            		</a> 
+	            			<li>
+	            				<small> <b> {{ $child->name }}</b> </small>
+	            			</li>
+	            		</a>	            		
+	            	</ul>
 					@endforeach
+					@if($category->children->count())
+						<a href="{{ route('subCategories.index') }}"> <small class="pull-right"><b>view all</b></small> </a>
+					@endif
+					
 	            </td>
 	            <td>
 	            	{{ $category->description }} <br>
 	            </td>
 	            <td ><img style="width: 50px;height: 50px" src="{{ asset('images/categories/'.$category->category_image) }}" alt="category image"></td>
-	            <!-- <td>{{ $category->parent_id }}</td> -->
 	            <td>
-	                <div class='btn btn-group'>
-	                    <!-- <a href="" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a> -->
-	                    <a href="{{ route('categories.edit',$category->id) }}" class='btn btn-info btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+	                <div class='btn btn-group wrapping-buttons'>
+	                 
+	                    <a href="{{ route('categories.edit',$category->id) }}" class='btn  btn-info btn-xs'>edit</a>
 
 	                    <form  method="post" action="{{ route('categories.destroy',$category->id) }}">
 							{{ csrf_field() }}
-	                    	<button type="submit" class='btn btn-danger btn-xs'>
-	                    		<i class="glyphicon glyphicon-trash"></i>
-	                    	</button >
+	                    	<button class='btn btn-danger btn-xs' type="submit">Delete</button>
+
 	                    	<input type="hidden" name="_method" value="DELETE">
 	                	</form>
 	                </div>

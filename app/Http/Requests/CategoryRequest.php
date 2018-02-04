@@ -39,7 +39,7 @@ class CategoryRequest extends FormRequest
         $image = request()->file('category_image');
         $imageName = str_random(20).$image->getClientOriginalName();
         $image_resize = Image::make($image->getRealPath());
-        $image_resize->resize(50, 50);
+        $image_resize->resize(300, 300);
         $categoryImagesDirectory = public_path('images/Categories');
 
         if (! is_dir($categoryImagesDirectory) ) {

@@ -20,7 +20,7 @@
 	        <th>Latitude</th>
 	        <th>Langtude</th>
 	        <th>Image</th>
-	        <th colspan="3">Action</th>
+	        <th class="wrapping">Action</th>
 	    </thead>
 	    <tbody>
 	   		@foreach($companies as $key => $company)
@@ -32,19 +32,17 @@
 		            <td>{{ $company->description }}</td>
 		            <td>{{ $company->categories->name }}</td>
 		            <td>{{ $company->lat }}</td>
-		            <td>{{ $company->lang }}</td>
+		            <td>{{ $company->long }}</td>
 		            <td><img style="width: 50px;height: 50px" src="{{ asset('images/companies/'.$company->company_image) }}" alt="company image"></td>
 		            
 		            <td>
-	                	<div class='btn btn-group'>
-		                  
-		                    <a href="{{ route('companies.edit',$company->id) }}" class='btn btn-info btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+	                	<div class='btn btn-group wrapping-buttons'>
+		          
+		                    <a href="{{ route('companies.edit',$company->id) }}" class='btn  btn-info btn-xs'>edit</a>
 											
 		                    <form  method="post" action="{{ route('companies.destroy',$company->id) }}">
 								{{ csrf_field() }}
-		                    	<button type="submit" class='btn btn-danger btn-xs'>
-		                    		<i class="glyphicon glyphicon-trash"></i>
-		                    	</button >
+		                    	<button class='btn btn-danger btn-xs' type="submit">Delete</button>
 		                    	<input type="hidden" name="_method" value="DELETE">
 		                	</form>
 	                	</div>

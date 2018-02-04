@@ -18,7 +18,7 @@ class Branch extends Model
         'phone',
         'company_id',
         'lat',
-        'lang'
+        'long'
     ];
 
     /*
