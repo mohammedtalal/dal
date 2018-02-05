@@ -30,7 +30,8 @@ class CategoryRequest extends FormRequest
         return [
             'name'            => 'required',
             'description'     => 'required',
-            'category_image'  => 'required|image|mimes:jpeg,bmp,png'
+            'category_image'  => 'required|image|mimes:jpeg,bmp,png',
+            'parent_id'       => 'required'
         ];
     }
 

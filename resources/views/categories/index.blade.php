@@ -15,7 +15,6 @@
 	        <th>Name</th>
 	        <th>Description</th>
 	        <th>Image</th>
-	        <!-- <th>Parent</th> -->
 	        <th class="wrapping">Action</th>
 	    </thead>
 	    <tbody>

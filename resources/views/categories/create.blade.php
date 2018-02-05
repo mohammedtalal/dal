@@ -33,9 +33,9 @@
 	          		<option value="{{ $category->id }}">{{ $category->name }}</option>
 	          	@endforeach
 	          </select>
-       	  </div>
+       	  	</div>
 		  
-		  <div class="form-groub">
+		  <div class="form-group col-md-6">
 		  	<button type="submit" class="btn btn-primary">Add Category</button>
 		  </div>		  
 		</form>

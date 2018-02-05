@@ -4,8 +4,6 @@
 		Auth::routes();
 		Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 
-
-
 		Route::group([ 'middleware'	=> ['web','auth']] , function() {
 			
 		Route::get('admin','HomeController@index')->name('admin');

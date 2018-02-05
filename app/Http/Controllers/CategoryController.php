@@ -22,7 +22,6 @@ class CategoryController extends Controller
 
 
     public function index() {
-        
     	$categories = Category::where('parent_id', '=', 0)->with('children')->orderBy('id','asc')->paginate(10);
     	return view('categories.index',compact('categories'));
     }
@@ -40,7 +39,8 @@ class CategoryController extends Controller
 
     public function edit($id) {
     	$category = $this->category->findCat($id);
-    	return view('categories.edit',compact('category'));
+        $categories = Category::where('parent_id', '=', 0)->get();
+    	return view('categories.edit',compact('category','categories'));
     }
 
 
