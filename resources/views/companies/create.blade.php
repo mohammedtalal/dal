@@ -63,7 +63,7 @@
 				    <button type="button" class="btn pull-right btn-defualt btn-sm" id="add-more" >
 				    	<i class="glyphicon glyphicon-plus"></i>
 				    </button> 
-				    <input type="tel" class="form-control" id="phone" name="phone[]" pattern="[0-9]{11}" minlength="10" maxlength="11" required>
+				    <input type="tel" class="form-control" id="phone" name="phone[]" pattern="[0-9]{11}" minlength="8" maxlength="11" required>
 				</div>
 			</div>
 

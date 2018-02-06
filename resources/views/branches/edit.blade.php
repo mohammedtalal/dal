@@ -16,7 +16,7 @@
 		  
 		<div class="form-group col-md-6">
 		    <label for="phone">Phone</label>
-		    <input 	type="tel" class="form-control" name="phone" id="phone" pattern="[0-9]{11}" minlength="10" maxlength="11" value="{{ $branch->phone }}" required>
+		    <input 	type="tel" class="form-control" name="phone" id="phone" pattern="[0-9]{11}" minlength="8" maxlength="11" value="{{ $branch->phone }}" required>
 		</div>
 
         <div class="form-group col-md-6">

@@ -25,7 +25,7 @@ class ApiBaseController extends Controller
     }
 
 
-    public function sendError($error, $errorMessages = [], $code = 404)
+    public function sendError($error, $errorMessages = [])
     {
     	$response = [
             'success' => false,
@@ -38,6 +38,6 @@ class ApiBaseController extends Controller
         }
 
 
-        return response()->json($response, $code);
+        return response()->json($response);
     }
 }

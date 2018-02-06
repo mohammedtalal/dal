@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Category;
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManagerStatic as Image ;
@@ -38,15 +39,15 @@ class CategoryRequest extends FormRequest
 
     public function uploadImage() {
         $image = request()->file('category_image');
-        $imageName = str_random(20).$image->getClientOriginalName();
+        $imageName = Carbon::now()->toDayDateTimeString().$image->getClientOriginalName();
         $image_resize = Image::make($image->getRealPath());
         $image_resize->resize(300, 300);
-        $categoryImagesDirectory = public_path('images/Categories');
+        $categoryImagesDirectory = public_path('images');
 
         if (! is_dir($categoryImagesDirectory) ) {
-            File::makeDirectory(public_path(). '/' .'images/categories',0777);
+            File::makeDirectory(public_path(). '/' .'images',0777);
         } 
-        $image_resize->save(public_path('images/categories/').$imageName);
+        $image_resize->save(public_path('images').$imageName);
         return $imageName;
     }
 

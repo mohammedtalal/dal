@@ -39,7 +39,7 @@ class CompanyController extends Controller
     public function update( $id) {
         $companyRequest = new CompanyRequest;
     	$companyRequest = Company::find($id);
-        $oldImagePath = public_path('images/companies/'. $companyRequest->company_image);
+        $oldImagePath = public_path('images/'. $companyRequest->company_image);
         if(! is_null($oldImagePath)) {
             File::delete($oldImagePath);
         }
@@ -48,7 +48,7 @@ class CompanyController extends Controller
         $imageName = str_random(50).$image->getClientOriginalName();
         $image_resize = Image::make($image->getRealPath());
         $image_resize->resize(50, 50);
-        $image_resize->save(public_path('images/companies/'.$imageName));
+        $image_resize->save(public_path('images/'.$imageName));
 
         $companyRequest->category_id = request('category_id');
         $companyRequest->name = request('name');
@@ -68,7 +68,7 @@ class CompanyController extends Controller
         // delete related branches
         $company->branches()->delete();
 
-        $oldImagePath = public_path('images/companies/'. $company->company_image);
+        $oldImagePath = public_path('images/'. $company->company_image);
         if(! is_null($oldImagePath)) {
             File::delete($oldImagePath);
         }

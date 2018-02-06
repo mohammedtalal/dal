@@ -21,7 +21,7 @@ class CategoriesApiController extends ApiBaseController
      */
 
     public function downloadImage($imageName) {
-         $path = public_path('images/categories/'.$imageName);
+         $path = public_path('images/'.$imageName);
          return response()->download($path);   
     }
 
