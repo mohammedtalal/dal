@@ -12,22 +12,21 @@
 			{{ csrf_field() }}
 			<div class="form-group col-md-6">
 			    <label for="name">Name</label>
-			    <input type="text" class="form-control" id="name" name="name" required>
+			    <input type="text" class="form-control" id="name" name="name" pattern=".*\S+.*" required>
 			</div>
 
 			<div class="form-group col-md-6">
 			    <label for="address">Address</label>
-			    <input type="text" class="form-control" id="address" name="address" required>
+			    <input type="text" class="form-control" id="address" name="address" pattern=".*\S+.*" required>
 			</div>
 			
 			<div class="form-group col-md-6">
 			    <label for="description">Description</label>
-			    <textarea type="text" class="form-control" id="description" name="description" rows="8" required></textarea>
+			    <textarea type="text" class="form-control" id="description" name="description" rows="8"pattern=".*\S+.*" required></textarea>
 			</div>		
 			
 			<div class="form-group col-md-6">
 			    <label for="category_id">Select category of company</label>
-
 			    <select name="category_id" id="category_id" class="form-control" required>
 			    	<option value="" selected >please select category</option>
 			    	@foreach($categories as $category)
@@ -49,12 +48,12 @@
 
 			<div class="form-group col-md-6">
 			    <label for="lat">Latitude</label>
-			    <input type="number" class="form-control" id="lat" name="lat" required>
+			    <input type="text" class="form-control" id="lat" name="lat" required>
 			</div>				
 
 			<div class="form-group col-md-6">
 			    <label for="long">Langtude</label>
-			    <input type="number" class="form-control" id="long" name="long" required>
+			    <input type="text" class="form-control" id="long" name="long" required>
 			</div>
 
 			<div  id="dynamic-field">

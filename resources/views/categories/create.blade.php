@@ -12,12 +12,12 @@
 			{{ csrf_field() }}
 		  <div class="form-group ">
 		    <label for="name">Name</label>
-		    <input type="text" class="form-control" id="name" name="name" required>
+		    <input type="text" class="form-control" id="name" name="name" pattern=".*\S+.*" required>
 		  </div>
 		  
 		  <div class="form-group">
 		    <label for="description">Description</label>
-		    <textarea class="form-control" name="description" name="description" id="description" rows="8" required></textarea>
+		    <textarea class="form-control" name="description" name="description" id="description" rows="8" pattern=".*\S+.*" required></textarea>
 		  </div>
 
 		  <div class="form-group col-md-6">
@@ -33,9 +33,9 @@
 	          		<option value="{{ $category->id }}">{{ $category->name }}</option>
 	          	@endforeach
 	          </select>
-       	  	</div>
+       	  </div>
 		  
-		  <div class="form-group col-md-6">
+		  <div class="form-groub">
 		  	<button type="submit" class="btn btn-primary">Add Category</button>
 		  </div>		  
 		</form>

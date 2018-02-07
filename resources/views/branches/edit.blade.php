@@ -7,11 +7,11 @@
 @section('content')
 	 <div class="row">
        <div class="col-md-12 ">
-		<form method="POST" action="{{ route('branches.update',$branch->id) }}">
+		<form method="POST" action="{{ route('branches.store') }}">
 			{{ csrf_field() }}
 		<div class="form-group col-md-6">
 		    <label for="address">Address</label>
-		    <input type="text" class="form-control" id="address" name="address" value="{{ $branch->address }}" required>
+		    <input type="text" class="form-control" pattern=".*\S+.*" id="address" name="address" value="{{ $branch->address }}" required>
 		</div>
 		  
 		<div class="form-group col-md-6">
@@ -21,11 +21,11 @@
 
         <div class="form-group col-md-6">
 		    <label for="lat">Latitude</label>
-		    <input type="number" class="form-control" id="lat" name="lat" value="{{ $branch->lat }}" required>
+		    <input type="text" class="form-control" id="lat" name="lat" value="{{ $branch->lat }}" required>
 		</div>
 		<div class="form-group col-md-6">
 		    <label for="long">Langtude</label>
-		    <input type="number" class="form-control" id="long" name="long" value="{{ $branch->long }}" required>
+		    <input type="text" class="form-control" id="long" name="long" value="{{ $branch->long }}" required>
 		</div>
 		
 		<div class="form-group col-md-12">

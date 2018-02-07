@@ -13,7 +13,7 @@ class ApiBaseController extends Controller
 
     public function sendResponse($result=[], $deleted=[], $message=[], $interval)
     {
-    	$response = [
+        $response = [
             'status' => true,
             'message' => $message,
             'createdOrUpdated'    => $result,
@@ -27,7 +27,7 @@ class ApiBaseController extends Controller
 
     public function sendError($error, $errorMessages = [])
     {
-    	$response = [
+        $response = [
             'success' => false,
             'message' => $error,
         ];

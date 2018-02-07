@@ -12,27 +12,30 @@
 			{{ csrf_field() }}
 			<div class="form-group col-md-6">
 			    <label for="name">Name</label>
-			    <input type="text" class="form-control" id="name" name="name" value="{{ $company->name }} " required>
+			    <input type="text" class="form-control" id="name" name="name" value="{{ $company->name }} " pattern=".*\S+.*" required>
 			</div>
 
 			<div class="form-group col-md-6">
 			    <label for="address">address</label>
-			    <input type="text" class="form-control" id="address" name="address" value="{{ $company->address }}" required>
+			    <input type="text" class="form-control" id="address" name="address" pattern=".*\S+.*" value="{{ $company->address }}" required>
 			</div>
 			
 			<div class="form-group col-md-6">
 			    <label for="description">Description</label>
-			    <textarea type="text" class="form-control" id="description" name="description" rows="8"  required>{{ $company->description }}</textarea>
+			    <textarea type="text" class="form-control" id="description" name="description" rows="8" pattern=".*\S+.*" required>{{ $company->description }}</textarea>
 			</div>
 
 			<div class="form-group col-md-6">
 			    <label for="phone">Phone</label>
-			    <input type="tel" class="form-control" id="phone" name="phone" minlength="8" maxlength="11" value="{{ $company->phone }}" required>
+			    <input type="tel" class="form-control" id="phone" name="phone"  minlength="8" maxlength="11" value="{{ $company->phone }}" required>
 			</div>
 			
 			<div class="form-group col-md-6">
 			    <label for="category_id">Select company category</label>
 			    <select name="category_id" id="category_id" class="form-control">
+			        @if($company->categories)
+			        <option value="{{ $company->categories->id }}" require> {{ $company->categories->name }}</option>
+			        @endif
 			    	@foreach($categories as $category)
 			    		<option value="{{ $category->id }}" require> {{ $category->name }}</option>
 			    	@endforeach
@@ -40,7 +43,7 @@
 			</div>
 			<div class="form-group col-md-6">
 				@if("images/companies/'.$company->company_image")
-		           	<img style="width: 50px;height: 50px" src="{{ asset('images/companies/'.$company->company_image) }}" alt="company image">
+		           	<img style="width: 50px;height: 50px" src="{{ asset('images/'.$company->company_image) }}" alt="company image">
 		        @else
 	            	<td>No image found</td>
 	            @endif
@@ -49,11 +52,11 @@
 			</div>
 			<div class="form-group col-md-6">
 			    <label for="lat">Latitude</label>
-			    <input type="number" class="form-control" id="lat" name="lat" value="{{ $company->lat }}" required>
+			    <input type="text" class="form-control" id="lat" name="lat" value="{{ $company->lat }}" required>
 			</div>
 			<div class="form-group col-md-6">
 			    <label for="long">Langtude</label>
-			    <input type="number" class="form-control" id="long" name="long" value="{{ $company->long }}" required>
+			    <input type="text" class="form-control" id="long" name="long" value="{{ $company->long }}" required>
 			</div>
 
 		  <div class="form-groub col-md-6">

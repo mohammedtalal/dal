@@ -22,7 +22,7 @@
 
 		  <div class="form-group col-md-6">
 		  	@if("images/categories/'.$category->category_image")
-	           	<img style="width: 50px;height: 50px" src="{{ asset('images/categories/'.$category->category_image) }}" alt="category image">
+	           	<img style="width: 50px;height: 50px" src="{{ asset('images/'.$category->category_image) }}" alt="category image">
 	        @else
             	<td>No image found</td>
             @endif

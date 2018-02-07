@@ -33,11 +33,11 @@
 		            <td>{{ $company->categories->name }}</td>
 		            <td>{{ $company->lat }}</td>
 		            <td>{{ $company->long }}</td>
-		            <td><img style="width: 50px;height: 50px" src="{{ asset('images/companies/'.$company->company_image) }}" alt="company image"></td>
+		            <td><img style="width: 50px;height: 50px" src="{{ asset('images/'.$company->company_image) }}" alt="company image"></td>
 		            
 		            <td>
 	                	<div class='btn btn-group wrapping-buttons'>
-		          
+		                  
 		                    <a href="{{ route('companies.edit',$company->id) }}" class='btn  btn-info btn-xs'>edit</a>
 											
 		                    <form  method="post" action="{{ route('companies.destroy',$company->id) }}">

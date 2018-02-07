@@ -7,7 +7,6 @@ use App\Company;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\uploadImage;
 use App\Interfaces\CategoryRepositoryInterface as CategoryInterface;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
@@ -23,32 +22,31 @@ class CategoryController extends Controller
 
 
     public function index() {
-        // dd(Carbon::now());
-    	$categories = Category::where('parent_id', '=', 0)->with('children')->orderBy('id','asc')->paginate(10);
-    	return view('categories.index',compact('categories'));
+        $categories = Category::where('parent_id', '=', 0)->with('children')->orderBy('id','asc')->paginate(10);
+        return view('categories.index',compact('categories'));
     }
 
-	public function create() {
+    public function create() {
         $categories = Category::where('parent_id', '=', 0)->get();
-    	return view('categories.create',compact('categories'));
+        return view('categories.create',compact('categories'));
     }
 
     public function store() {
         $catRequest = new CategoryRequest;
         $catRequest->persistCreateCategory();
-    	return redirect()->route('categories.index')->with('success','Category Created Successfully');
+        return redirect()->route('categories.index')->with('success','Category Created Successfully');
     }
 
     public function edit($id) {
-    	$category = $this->category->findCat($id);
+        $category = $this->category->findCat($id);
         $categories = Category::where('parent_id', '=', 0)->get();
-    	return view('categories.edit',compact('category','categories'));
+        return view('categories.edit',compact('category','categories'));
     }
 
 
     public function update(CategoryRequest $catRequest, $id) {
-    	$catRequest = $this->category->findCat($id);
-        $oldImagePath = public_path('images/'. $catRequest->category_image);
+        $catRequest = $this->category->findCat($id);
+        $oldImagePath = public_path('/images/'. $catRequest->category_image);
         if(! is_null($oldImagePath)) {
             File::delete($oldImagePath);
         }
@@ -59,7 +57,7 @@ class CategoryController extends Controller
         $imageName = str_random(50).$image->getClientOriginalName();
         $image_resize = Image::make($image->getRealPath());
         $image_resize->resize(50, 50);
-        $image_resize->save(public_path('images/').$imageName);
+        $image_resize->save(public_path('/images/').$imageName);
         
         if (request('parent_id') != 0 ) {
             $catRequest->parent_id = request('parent_id');
@@ -68,10 +66,9 @@ class CategoryController extends Controller
         $catRequest->name = request('name');
         $catRequest->description = request('description');
         $catRequest->category_image = $imageName;
-
         $catRequest->save();
 
-    	return redirect()->route('categories.index')->with('success','Category Updated successfully');
+        return redirect()->route('categories.index')->with('success','Category Updated successfully');
     }
 
     public function destroy($id) {
@@ -85,7 +82,7 @@ class CategoryController extends Controller
             File::delete($oldImagePath);
         }
         // delete main category
-    	$category->delete();
-    	return redirect()->route('categories.index')->with('danger','Deleted Category successfully');
+        $category->delete();
+        return redirect()->route('categories.index')->with('danger','Deleted Category successfully');
     }
 }

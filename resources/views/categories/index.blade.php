@@ -23,7 +23,7 @@
 	            <td>{{ ++$key }}</td>
 	            <td>
 	            	{{ $category->name }} <br>
-					
+
 	            	@foreach($category->children->slice(0,3) as $child)
 	            	<ul>
 	            		<a href="{{ route('categories.edit',$child->id) }}">
@@ -36,21 +36,19 @@
 					@if($category->children->count())
 						<a href="{{ route('subCategories.index') }}"> <small class="pull-right"><b>view all</b></small> </a>
 					@endif
-					
 	            </td>
 	            <td>
 	            	{{ $category->description }} <br>
 	            </td>
-	            <td ><img style="width: 50px;height: 50px" src="{{ asset('images/categories/'.$category->category_image) }}" alt="category image"></td>
+	            <td ><img style="width: 50px;height: 50px" src="{{ asset('images/'.$category->category_image) }}" alt="category image"></td>
+	            <!-- <td>{{ $category->parent_id }}</td> -->
 	            <td>
 	                <div class='btn btn-group wrapping-buttons'>
-	                 
 	                    <a href="{{ route('categories.edit',$category->id) }}" class='btn  btn-info btn-xs'>edit</a>
 
 	                    <form  method="post" action="{{ route('categories.destroy',$category->id) }}">
 							{{ csrf_field() }}
 	                    	<button class='btn btn-danger btn-xs' type="submit">Delete</button>
-
 	                    	<input type="hidden" name="_method" value="DELETE">
 	                	</form>
 	                </div>

@@ -14,31 +14,31 @@ class CompanyController extends Controller
 {
     
     public function index() {
-    	$companies = Company::orderBy('id','asc')->paginate(10);
-    	return view('companies.index',compact('companies'));
+        $companies = Company::orderBy('id','asc')->paginate(10);
+        return view('companies.index',compact('companies'));
     }
 
-	public function create() {
+    public function create() {
         $categories = Category::where('parent_id', '=',0)->get();
-    	return view('companies.create',compact('categories'));
+        return view('companies.create',compact('categories'));
     }
 
     public function store() {
         $companyRequest = new CompanyRequest ;
         $companyRequest->persistCreateCompany();
-    	return redirect()->route('companies.index')->with('success','Company Created Successfully');
+        return redirect()->route('companies.index')->with('success','Company Created Successfully');
     }
 
     public function edit( $id) {
-    	$company = Company::find($id);
+        $company = Company::find($id);
         $categories = Category::all();
         
-    	return view('companies.edit',compact('company','categories'));
+        return view('companies.edit',compact('company','categories'));
     }
 
     public function update( $id) {
         $companyRequest = new CompanyRequest;
-    	$companyRequest = Company::find($id);
+        $companyRequest = Company::find($id);
         $oldImagePath = public_path('images/'. $companyRequest->company_image);
         if(! is_null($oldImagePath)) {
             File::delete($oldImagePath);
@@ -60,11 +60,11 @@ class CompanyController extends Controller
         $companyRequest->long   = request('long');
         $companyRequest->save();
 
-    	return redirect()->route('companies.index')->with('success','Company Updated successfully');
+        return redirect()->route('companies.index')->with('success','Company Updated successfully');
     }
 
     public function destroy($id) {
-       	$company = Company::with('branches')->find($id);
+        $company = Company::with('branches')->find($id);
         // delete related branches
         $company->branches()->delete();
 
@@ -74,6 +74,6 @@ class CompanyController extends Controller
         }
 
         $company->delete();
-    	return redirect()->route('companies.index')->with('danger','Deleted Company successfully');
+        return redirect()->route('companies.index')->with('danger','Deleted Company successfully');
     }
 }

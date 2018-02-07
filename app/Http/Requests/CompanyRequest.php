@@ -2,12 +2,14 @@
 
 namespace App\Http\Requests;
 
-use App\Company;
 use Carbon\Carbon;
+use App\Company;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\File;
-use Intervention\Image\ImageManagerStatic as Image ;
+
 use Symfony\Component\HttpFoundation\File\getClientOriginalName;
+use Intervention\Image\ImageManagerStatic as Image ;
+
+use Illuminate\Support\Facades\File;
 
 
 class CompanyRequest extends FormRequest
@@ -35,8 +37,8 @@ class CompanyRequest extends FormRequest
             'phone' => 'required|regex:/(01)[0-9]{9}/',
             'category_id' => 'required',
             'featured_image_id' => 'required',  
-            'lat' => 'required|Numeric',
-            'long' => 'required|Numeric'
+            'lat' => 'required',
+            'long' => 'required'
         ];
     }
 
@@ -44,7 +46,7 @@ class CompanyRequest extends FormRequest
         $image = request()->file('company_image');
         $imageName = Carbon::now()->timestamp.$image->getClientOriginalName();
         $image_resize = Image::make($image->getRealPath());
-        $image_resize->resize(50, 50);
+        $image_resize->resize(300, 300);
         $companyImagesDirectory = public_path('images');
 
         if (! is_dir($companyImagesDirectory) ) {
@@ -64,7 +66,6 @@ class CompanyRequest extends FormRequest
         $company->company_image =$this->uploadImage();
         $company->lat   = request('lat');
         $company->long   = request('long');
-        dd($company->company_image);
         $company->save();
     }
 
